@@ -37,12 +37,15 @@ function Navbar() {
                   <span className="badge">New</span>
                 </a>
               </li>
+
               <li>
-                <a>Settings</a>
+                <Link to={routes.register}>Register</Link>
               </li>
+
               <li>
-                <a>Logout</a>
+                <Link to={routes.login}>Login</Link>
               </li>
+
             </ul>
           </div>
         </div>
