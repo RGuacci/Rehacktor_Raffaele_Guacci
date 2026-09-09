@@ -1,4 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { UserContext } from '../../context/UserContext';
 
 function Register() {
   const {
@@ -7,20 +10,78 @@ function Register() {
     formState: { errors },
   } = useForm();
 
-  const handleData = (data) => console.log(data);
+  const navigate = useNavigate();
+
+  const { signUp } = useContext(UserContext);
+
+  const handleData = async (user_data) => {
+    await signUp({
+      email: user_data.email,
+      password: user_data.password,
+      options: {
+        data: {
+          first_name: user_data.first_name,
+          last_name: user_data.last_name,
+          username: user_data.username,
+        },
+      },
+    });
+
+    navigate("/");
+  };
 
   return (
     <>
+      <h1 className="font-electro text-center font-bold text-5xl mt-30">
+        Registrati
+      </h1>
       <div className=" h-screen flex justify-center items-center">
         <form onSubmit={handleSubmit(handleData)}>
-          <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-            <legend className="fieldset-legend">Registrati</legend>
+          <fieldset className="fieldset bg-nav-gray border-base-300 rounded-box w-xs border p-4">
+            <label className="label">Nome</label>
+            <input
+              type="text"
+              className="input"
+              placeholder="Mario"
+              {...register("fisrt_name", {
+                required: "Il nome è obbligatorio",
+              })}
+            />
+            {errors.fisrt_name && (
+              <p className="text-red-500">{errors.fisrt_name.message}</p>
+            )}
+
+            <label className="label">Cognome</label>
+            <input
+              type="text"
+              className="input"
+              placeholder="Rossi"
+              {...register("last_name", {
+                required: "Il cognome è obbligatorio",
+              })}
+            />
+            {errors.last_name && (
+              <p className="text-red-500">{errors.last_name.message}</p>
+            )}
+
+            <label className="label">Username</label>
+            <input
+              type="text"
+              className="input"
+              placeholder="Mario.Rossi"
+              {...register("username", {
+                required: "Il cognome è obbligatorio",
+              })}
+            />
+            {errors.username && (
+              <p className="text-red-500">{errors.username.message}</p>
+            )}
 
             <label className="label">Email</label>
             <input
               type="email"
               className="input"
-              placeholder="Email"
+              placeholder="mariorossi@gmail.com"
               {...register("email", { required: "La mail è obbligatoria" })}
             />
             {errors.email && (
@@ -31,7 +92,6 @@ function Register() {
             <input
               type="password"
               className="input"
-              placeholder="Password"
               {...register("password", {
                 required: "La password è obbligatoria",
               })}
