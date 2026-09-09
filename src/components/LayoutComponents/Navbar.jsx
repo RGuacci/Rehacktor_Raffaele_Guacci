@@ -1,16 +1,19 @@
+import SearchBar from '../NavbarComponents/SearchBar';
+import { Link } from 'react-router';
+import routes from '../../router/routes';
+
 function Navbar() {
   return (
     <>
-      <nav className="navbar bg-base-100 shadow-sm">
+      <nav className="navbar bg-nav-gray  h-16">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <Link to={routes.home} className="btn btn-ghost text-xl font-electro">Reactor</Link>
         </div>
         <div className="flex gap-2">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input w-24 md:w-auto"
-          />
+
+          <SearchBar />
+
+
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}

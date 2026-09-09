@@ -1,15 +1,13 @@
-import { useLoaderData } from "react-router";
+import { useLoaderData , useParams } from "react-router";
 import GameList from "../components/HomeComponents/GameList";
 
-function Homepage() {
+function SearchPage() {
   const games = useLoaderData();
+  const { slug } = useParams();
 
   return (
     <>
-      <h1 className="font-electro text-center font-bold text-5xl my-10">
-        Reactor
-      </h1>
-
+    <h1 className="font-electro text-center font-bold text-5xl my-10">Cercato con : {slug}</h1>
       <GameList>
         {games.map((game) => {
           return <GameList.Card key={game.id} game={game} />;
@@ -19,4 +17,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default SearchPage;
