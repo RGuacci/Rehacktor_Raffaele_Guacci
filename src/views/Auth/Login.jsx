@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { useContext } from "react";
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from "../../context/UserContext";
 
 function Login() {
   const {
@@ -24,42 +24,41 @@ function Login() {
   };
 
   return (
-    <>
-      <h1 className="font-electro text-center font-bold text-5xl mt-30">
-        Accedi
-      </h1>
-      <div className=" h-screen flex justify-center items-center">
-        <form onSubmit={handleSubmit(handleData)}>
-          <fieldset className="fieldset bg-nav-gray border-base-300 rounded-box w-xs border p-4">
-            <label className="label">Nome</label>
+    <main className="h-screen flex justify-center items-center">
+      <form onSubmit={handleSubmit(handleData)}>
+        <h1 className="font-electro font-bold text-5xl text-center my-10">
+          Accedi
+        </h1>
 
-            <label className="label">Email</label>
-            <input
-              type="email"
-              className="input"
-              {...register("email", { required: "La mail è obbligatoria" })}
-            />
-            {errors.email && (
-              <p className="text-red-500">{errors.email.message}</p>
-            )}
+        <fieldset className="fieldset bg-nav-gray border-base-300 rounded-box w-xs border p-4">
+          <label className="label">Nome</label>
 
-            <label className="label">Password</label>
-            <input
-              type="password"
-              className="input"
-              {...register("password", {
-                required: "La password è obbligatoria",
-              })}
-            />
-            {errors.password && (
-              <p className="text-red-500">{errors.password.message}</p>
-            )}
+          <label className="label">Email</label>
+          <input
+            type="email"
+            className="input"
+            {...register("email", { required: "La mail è obbligatoria" })}
+          />
+          {errors.email && (
+            <p className="text-red-500">{errors.email.message}</p>
+          )}
 
-            <button className="btn btn-neutral mt-4">Accedi</button>
-          </fieldset>
-        </form>
-      </div>
-    </>
+          <label className="label">Password</label>
+          <input
+            type="password"
+            className="input"
+            {...register("password", {
+              required: "La password è obbligatoria",
+            })}
+          />
+          {errors.password && (
+            <p className="text-red-500">{errors.password.message}</p>
+          )}
+
+          <button className="btn btn-neutral mt-4">Accedi</button>
+        </fieldset>
+      </form>
+    </main>
   );
 }
 

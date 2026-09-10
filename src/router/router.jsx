@@ -7,6 +7,8 @@ import GenrePage from '../views/GenrePage';
 import AuthLayout from '../components/layouts/AuthLayout';
 import Register from '../views/Auth/Register';
 import Login from '../views/Auth/Login';
+import Profile from '../views/Auth/Profile';
+import ProfileSettings from '../views/Auth/ProfileSettings';
 import { getAllGamesLoader , getFilteredGames , getAllGenres ,getFilteredByGenres} from '../router/loaders';
 
 const router = createBrowserRouter ([
@@ -44,6 +46,14 @@ const router = createBrowserRouter ([
            {
             path : routes.login,
             Component : Login
+           },
+           {
+            path : routes.profile,
+            Component : Profile
+           },
+           {
+            path : routes.profile_settings,
+            Component : ProfileSettings
            }
             ]
          }
