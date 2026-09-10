@@ -55,7 +55,7 @@ function Login() {
               <p className="text-red-500">{errors.password.message}</p>
             )}
 
-            <button className="btn btn-neutral mt-4">Registrati</button>
+            <button className="btn btn-neutral mt-4">Accedi</button>
           </fieldset>
         </form>
       </div>

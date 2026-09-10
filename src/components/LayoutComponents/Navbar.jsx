@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import routes from "../../router/routes";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import { VscAccount ,  VscVerified  } from "react-icons/vsc";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -26,21 +27,17 @@ function Navbar() {
         <SearchBar />
 
         <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="User avatar"
-                src={
-                  "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                }
-              />
-            </div>
+          {/* Trigger */}
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+            {user ? (
+                // Qui andrà l'immagine eventualmente caricata dall'utente
+              <VscVerified className="text-3xl"/>
+            ) : (
+              <VscAccount  className="text-3xl" />
+            )}
           </div>
 
+          {/* Dropdown */}
           <ul
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
@@ -48,14 +45,11 @@ function Navbar() {
             {user ? (
               <>
                 <li>
-                  <button onClick={handleLogout}>Logout</button>
+                  <Link to="/profile">Profilo</Link>
                 </li>
 
                 <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
+                  <button onClick={handleLogout}>Logout</button>
                 </li>
               </>
             ) : (
